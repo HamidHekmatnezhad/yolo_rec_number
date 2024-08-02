@@ -11,11 +11,11 @@ bool_test = False
 bool_classes = True
 
 # index of witch image to start
-start_train = 0
+start_train = 3001
 start_test = 0
 
 # -1 if you want to save all images. or set number of images
-end_trian = 300 # -1 
+end_trian = 6001 # -1 
 end_test = -1
 
 # location of mnist data
@@ -70,6 +70,8 @@ if bool_train:
         with open('data_mnist/train/' + str(i) + '_num' + str(temp_d[0]) + '.txt', 'w') as f:
             f.write(str(temp_d[0])  + ' 0.511719 0.506250 0.579688 0.770833')
 
+        plt.close('all')
+
 if bool_test:
     # save images and write labels
     for i in range(start_test, end_test):
@@ -86,9 +88,11 @@ if bool_test:
         plt.grid(False)
 
         # save images and write labels
-        image = plt.imshow(image_data, cmap='Greys')
+        plt.imshow(image_data, cmap='Greys')
         plt.savefig('data_mnist/test/' + str(i) + '_num' + str(temp_d[0]) + '.png')
         with open('data_mnist/test/' + str(i) + '_num' + str(temp_d[0]) + '.txt', 'w') as f:
             f.write(str(temp_d[0])  + ' 0.511719 0.504167 0.570312 0.758333')
+
+        plt.close('all')
 
 print('done')
